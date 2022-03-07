@@ -1,0 +1,15 @@
+<div [formGroup]="form">
+    <div formArrayName="option" class="form-group input-incrementor"
+        *ngFor="let option of arrayControl.controls; let i = index;">
+        <mat-form-field appearance="outline">
+            <input matInput [formControlName]="i" maxlength="256">
+            <mat-error *ngFor="let error of getErrors(option)">
+                {{error.message}}
+            </mat-error>
+        </mat-form-field>
+        <div class="btn-wrapper">
+            <button type="button" [disabled]="arrayControl.length === 1" (click)="removeOption(i)">-</button>
+            <button type="button" [disabled]="stopNew(option, i)" (click)="addOption()">+</button>
+        </div>
+    </div>
+</div>

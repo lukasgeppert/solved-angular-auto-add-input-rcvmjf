@@ -1,0 +1,25 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Main form group : {{ professional.value | json}}
+</p>
+<p>
+  sub form group : {{ professional.get('application').value | json}}
+</p>
+<p>
+  feeModel form group : {{ professional.get('application.feeModel').value | json}}
+</p>
+<hr />
+<div [formGroup]="professional">
+  <div formGroupName="application">
+    jobTitle<input formControlName="jobTitle">
+  </div>
+  <hr />
+  <div formGroupName="application">
+    feeModel (my custom component) <shared-auto-add-input formArrayName="feeModel" max="3">
+    </shared-auto-add-input>
+  </div>
+  <hr />
+  <div formGroupName="application">
+    companyName<input formControlName="companyName">
+  </div>
+</div>
